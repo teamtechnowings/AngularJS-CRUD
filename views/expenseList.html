@@ -1,0 +1,35 @@
+ <div class="col-xs-12">
+ 	<a href="#/inputItem" style="margin-bottom: 10px" class="btn btn-primary btn-lg btn-block">
+ 		<span class="glyphicon glyphicon-plus"></span>
+   Add Expenses</a>
+   <div class="container-fluid mg-auto">
+
+      <table class="table">
+          <thead>
+            <th width="col">Select</th>
+            <th width="col">Item Name</th>
+              <th width="col">Expense</th>
+              <th width="col">Date</th>
+              <th width="col"></th>
+              <th width="col"></th>
+          </thead>
+            
+          <tr ng-repeat="item in expenseItems | orderBy: 'date'">
+            <td><button type="button" class="btn btn-sm btn-success pull-left" ng-click="markChecked(item)">
+              <span class="glyphicon" ng-class="item.checked ? 'glyphicon-check' : 'glyphicon-unchecked'"></span>
+            </button></td>
+            <td>{{item.itemName}}</td>
+              <td>{{item.expense}}</td>
+              <td>{{item.date}}</td>
+              <td><a href="#/inputItem/edit/{{item.id}}" class="btn btn-sm btn-default pull-right">
+                <span class="glyphicon glyphicon-pencil"></span>
+            </a> </td>
+              <td><button type="button" class="btn btn-sm btn-danger pull-right" ng-click="removeItem(item)">
+                  <span class="glyphicon glyphicon-trash"></span>
+                </button>
+              </button></td>
+              
+          </tr>
+      </table>
+      </div>
+    </div>

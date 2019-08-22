@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.1/angular.min.js"></script>
+  <script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope, $http) {
+  // email = $scope.email;
+  // psw = $scope.psw;
+  $http({
+    method: "GET",
+    url: "http://localhost:8080/AngularJSDemo/AngularJsServlet"
+    
+  }).then(function mySuccess(response) {
+      // a string, or an object, carrying the response from the server.
+      $scope.myRes = response.data.myArrayList;
+      $scope.statuscode = response.status;
+    }, function myError(response) {
+      $scope.myRes = response.myArrayList;
+  });
+});
+</script>
+</head>
+<body>
+<div ng-app="myApp">
+        <div ng-controller="myCtrl">
+           {{statuscode}}
+            <div ng-repeat="x in myRes">
+                <h3>{{x.map.uname+ "    " +x.map.upass+ "    "+x.map.email}}</h3>
+               
+            </div>
+             
+            </div>
+</div>
+</body>
+</html>
